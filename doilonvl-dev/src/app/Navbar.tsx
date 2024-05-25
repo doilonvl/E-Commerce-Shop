@@ -1,11 +1,13 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { buttonVariants } from "@/components/ui/button";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { ArrowRight } from "lucide-react"; 
 import Link from "next/link"; 
 
-const Navbar = () => {
-  const user = undefined;
-  const isAdmin = false;
+const Navbar = async () => {
+  const {getUser} = getKindeServerSession()
+  const user = await getUser();
+  const isAdmin = user?.email === process.env.ADMIN_EMAIL;
   return (
     <nav
       className="sticky z-[100] h-14 inset-x-0 top-0 w-full border-b
@@ -17,7 +19,7 @@ const Navbar = () => {
             border-zinc-200"
         >
           <Link href="/" className="flex z-40 font-semibold">
-            case<span className="text-green-600">Cobra</span>
+            Doi<span className="text-green-600">Lon</span>
           </Link>
 
           <div className="h-full flex items-center space-x-4">
