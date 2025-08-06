@@ -5,7 +5,6 @@ type CaseColor = 'blue' | 'rose' | 'zinc';
 import { useEffect, useRef, useState } from 'react'
 import { AspectRatio } from './ui/aspect-ratio'
 import { cn } from '@/lib/utils'
-
 const PhonePreview = ({
   croppedImageUrl,
   color,
@@ -19,7 +18,6 @@ const PhonePreview = ({
     height: 0,
     width: 0,
   })
-
   const handleResize = () => {
     if (!ref.current) return
     const { width, height } = ref.current.getBoundingClientRect()
