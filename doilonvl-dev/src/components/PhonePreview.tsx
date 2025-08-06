@@ -1,6 +1,7 @@
 'use client'
 
-import { CaseColor } from '@prisma/client'
+// Define CaseColor type locally if not exported from @prisma/client
+type CaseColor = 'blue' | 'rose' | 'zinc';
 import { useEffect, useRef, useState } from 'react'
 import { AspectRatio } from './ui/aspect-ratio'
 import { cn } from '@/lib/utils'
@@ -27,9 +28,7 @@ const PhonePreview = ({
 
   useEffect(() => {
     handleResize()
-
     window.addEventListener('resize', handleResize)
-
     return () => window.removeEventListener('resize', handleResize)
   }, [ref.current])
 
